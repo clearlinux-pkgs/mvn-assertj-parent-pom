@@ -4,7 +4,7 @@
 #
 Name     : mvn-assertj-parent-pom
 Version  : 2.1.6
-Release  : 1
+Release  : 2
 URL      : https://github.com/joel-costigliola/assertj-maven-parent-pom/archive/assertj-parent-pom-2.1.6.tar.gz
 Source0  : https://github.com/joel-costigliola/assertj-maven-parent-pom/archive/assertj-parent-pom-2.1.6.tar.gz
 Source1  : https://repo1.maven.org/maven2/org/assertj/assertj-parent-pom/2.1.6/assertj-parent-pom-2.1.6.pom
