@@ -4,14 +4,18 @@
 #
 Name     : mvn-assertj-parent-pom
 Version  : 2.1.6
-Release  : 3
+Release  : 4
 URL      : https://github.com/joel-costigliola/assertj-maven-parent-pom/archive/assertj-parent-pom-2.1.6.tar.gz
 Source0  : https://github.com/joel-costigliola/assertj-maven-parent-pom/archive/assertj-parent-pom-2.1.6.tar.gz
 Source1  : https://repo1.maven.org/maven2/org/assertj/assertj-parent-pom/2.1.6/assertj-parent-pom-2.1.6.pom
+Source2  : https://repo1.maven.org/maven2/org/assertj/assertj-parent-pom/2.2.2/assertj-parent-pom-2.2.2.pom
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: mvn-assertj-parent-pom-data = %{version}-%{release}
+Requires: mvn-assertj-parent-pom-license = %{version}-%{release}
+BuildRequires : apache-maven
+BuildRequires : buildreq-mvn
 
 %description
 A simple maven pom to gather all data common to AssertJ modules.
@@ -24,13 +28,28 @@ Group: Data
 data components for the mvn-assertj-parent-pom package.
 
 
+%package license
+Summary: license components for the mvn-assertj-parent-pom package.
+Group: Default
+
+%description license
+license components for the mvn-assertj-parent-pom package.
+
+
 %prep
+%setup -q -n assertj-maven-parent-pom-assertj-parent-pom-2.1.6
 
 %build
 
 %install
+mkdir -p %{buildroot}/usr/share/package-licenses/mvn-assertj-parent-pom
+cp LICENSE.txt %{buildroot}/usr/share/package-licenses/mvn-assertj-parent-pom/LICENSE.txt
+cp licence-header.txt %{buildroot}/usr/share/package-licenses/mvn-assertj-parent-pom/licence-header.txt
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/assertj/assertj-parent-pom/2.1.6
 cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/org/assertj/assertj-parent-pom/2.1.6/assertj-parent-pom-2.1.6.pom
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/org/assertj/assertj-parent-pom/2.2.2
+cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/org/assertj/assertj-parent-pom/2.2.2/assertj-parent-pom-2.2.2.pom
 
 
 %files
@@ -39,3 +58,9 @@ cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/org/assertj/assertj-par
 %files data
 %defattr(-,root,root,-)
 /usr/share/java/.m2/repository/org/assertj/assertj-parent-pom/2.1.6/assertj-parent-pom-2.1.6.pom
+/usr/share/java/.m2/repository/org/assertj/assertj-parent-pom/2.2.2/assertj-parent-pom-2.2.2.pom
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/mvn-assertj-parent-pom/LICENSE.txt
+/usr/share/package-licenses/mvn-assertj-parent-pom/licence-header.txt
